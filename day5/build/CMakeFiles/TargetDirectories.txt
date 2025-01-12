@@ -1,0 +1,3 @@
+/home/vedantsagwal/dsa/day5/build/CMakeFiles/single_file.dir
+/home/vedantsagwal/dsa/day5/build/CMakeFiles/edit_cache.dir
+/home/vedantsagwal/dsa/day5/build/CMakeFiles/rebuild_cache.dir
