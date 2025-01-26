@@ -14,6 +14,18 @@ int powerxn(int x, int n) {
         return x * powerxn(x, n / 2) * powerxn(x, n / 2);
     }
 }
+int powerxnOpt(int x, int n) {
+    int result = 1;
+    while (n != 0) {
+        if (n % 2 == 1) {
+            result *= x; 
+        }
+        x = x * x;
+        n = n / 2;
+    }
+    return result;
+}
+
 
 int main() {
     int t;
@@ -22,7 +34,7 @@ int main() {
         int x;
         int n;
         cin >> x >> n;
-        cout << powerxn(x, n) << endl;
+        cout << powerxnOpt(x, n) << endl;
     }
     return 0;
 }
