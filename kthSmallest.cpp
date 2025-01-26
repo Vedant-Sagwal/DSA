@@ -47,7 +47,7 @@ int solve(vector<int> &nums, int p, int n, int k) {
     }
 }
 
-int kthSmallestQuick(vector <int> &nums, int k) {
+int findKthLargest(vector <int> &nums, int k) {
     return solve(nums, 0, nums.size(),  k);
 }
 
