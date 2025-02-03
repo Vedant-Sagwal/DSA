@@ -1,69 +1,24 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <vector>
+using namespace std;
 
-#define STACKSIZE 100000
-
-typedef struct stack {
-    int arr[STACKSIZE];
-    int top = 0;
-} stack;
-
-void push(stack s1, int a) {
-    //overflow check
-    if (top + 1 >= STACKSIZE) {
-        return ;
-    }
-    arr[++top] = a;
-}
-int pop(stack s1) {
-    //underflow check
-    if (top == 0) {
-        return ;
-    }
-    return arr[top--];
-}
-int topView(stack s1) {
-    if (isEmpty(s1)) {
+int firstZero(int * arr,int p, int i) {
+    //Base Case
+    if (arr[i] != 1 && arr[i] != 0) {
         return -1;
     }
-    return s1[top];
-}
-bool isEmpty(stack s1) {
-    return s1.top() == -1;
-}
-
-int* stockSpan(int* price, int n) {
-    stack s1;
-    int s[n];
-    s[0] = 1;
-    push(s1, 0);
-    for (int i = 1; i < n; i++) {
-        while (!empty(s1) && price[i] > price[top(s1)]) {
-           int temp = pop(s1); 
-        }
-        if (isEmpty(s1) ) {
-            s[i] = i + 1;
-        }
-        else {
-            s[i] = i - top(s1);
-        }
+    if (arr[i] == 0 && arr[i - 1] == 1) {
+        return i;
     }
-    return s;
+    int nextIndex = 2* i;
+    else if (arr[i] == 1) {
+        return firstZero(arr,i, nextIndex);
+    }
+    else {
+        return firstZero(arr, i / 2, i);
+    } 
 }
 
 int main() {
-    int t;
-    while (t--) {
-        int n; 
-        int price[n];
-        for (int i = 0; i < n; i++) {
-            scanf("%d", &price[i]); 
-        }
-        int * s = stockSpan(price, n);
-        for (int i = 0; i < n; i++) {
-            printf(s[i]);
-        }
-    }
     return 0;
 }
-
