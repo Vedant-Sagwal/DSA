@@ -21,6 +21,13 @@ void nearlySorted(int arr[], int n, int k) {
     }
 }
 
+void merge(:)
+
+void nearlySortedMerge(vector <int> &arr, int k) {
+    int n = arr.size();
+
+}
+
 int main() {
     int t;
     cin >> t;
