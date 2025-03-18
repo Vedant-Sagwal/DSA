@@ -5,6 +5,7 @@ using namespace std;
 
 struct Node {
     string data;
+    string final_code;
     int freq;
     Node* left;
     Node* right;
@@ -23,7 +24,8 @@ void codePrint(Node* head, string code) {
         return ;
     }
     if (head -> left == NULL && head->right == NULL) {
-        cout << head->data << " : " << code << endl;
+        head->final_code = code;
+        cout << head->data << " ::::: " << head->final_code << endl;
     }
     if (head->left) {
         codePrint(head -> left, code + "0");
@@ -41,8 +43,8 @@ void level_order_traversal(Node* head) {
         Node* temp = pq1.front(); 
         pq1.pop();
         if (temp != NULL) {
-            cout << temp->data << " ";
-            cout << temp->freq << " ";
+            cout << temp->data << " : ";
+            cout << temp->freq << "    ";
             if (temp->left) {
                 pq1.push(temp->left);
             }
@@ -67,7 +69,7 @@ void huffmanAlgo(Node* lst[], int n) {
         pq1.push(lst[i]);
     }
     while (!pq1.empty()) {
-        Node* first = pq1.top(); 
+        Node* first = pq1.top();
         pq1.pop();
         if (!pq1.empty()) {
             Node* second = pq1.top(); 
@@ -82,33 +84,26 @@ void huffmanAlgo(Node* lst[], int n) {
         else {
             head = first;
         }
-   }
-
+    }
     level_order_traversal(head);
-    codePrint(head, "");
+    cout << endl << endl;
+    odePrint(head, "");
 }
 
 
 
 int main() {
-    string s;
-    cin >> s;
     int n;
     cin >> n;
-    vector <int> f(n, 0);
-    for (int i = 0; i < n; i++) {
-        cin >> f[i];
-    }
     Node* lst[n];
     for (int i = 0; i < n; i++) {
         Node* nn = new Node();
         lst[i] = nn;
-        lst[i]->data = s[i];
-        lst[i]->freq = f[i];
+        cin >> lst[i]->data;
+        cin >> lst[i]->freq;
         lst[i]->left = NULL;
         lst[i]->right = NULL;
     }
     huffmanAlgo(lst, n);
-
     return 0;
 }
